@@ -2,7 +2,8 @@
 
 #include <QOpenGLWidget>
 
-class GLWidget : public QOpenGLWidget
+class GLWidget final
+    : public QOpenGLWidget
 {
     Q_OBJECT
 

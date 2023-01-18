@@ -4,6 +4,7 @@ set(CMAKE_AUTOMOC ON)
 
 add_library(Qt-OpenGL-Example-Gui STATIC
     GLWidget.cc
+    MainWindow.cc
 )
 target_link_libraries(Qt-OpenGL-Example-Gui
     PUBLIC Qt::Core

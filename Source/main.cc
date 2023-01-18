@@ -2,7 +2,7 @@ extern "C" {
 #include "Engine/Engine.h"
 }
 
-#include "Gui/GLWidget.hh"
+#include "Gui/MainWindow.hh"
 
 #include <QApplication>
 #include <QSurfaceFormat>
@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
     format.setDepthBufferSize(24);
     QSurfaceFormat::setDefaultFormat(format);
 
-    GLWidget window;
+    MainWindow window;
     window.show();
 
     return app.exec();
