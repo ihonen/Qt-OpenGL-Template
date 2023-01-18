@@ -2,10 +2,10 @@ extern "C" {
 #include "Engine/Engine.h"
 }
 
+#include "Gui/GLWidget.hh"
+
 #include <QApplication>
 #include <QSurfaceFormat>
-
-#include "Gui/glwidget.h"
 
 int main(int argc, char* argv[])
 {
@@ -17,8 +17,6 @@ int main(int argc, char* argv[])
 
     GLWidget window;
     window.show();
-
-    Engine_init();
 
     return app.exec();
 }

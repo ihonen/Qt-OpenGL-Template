@@ -3,7 +3,7 @@ find_package(OpenGL)
 ################################################################################
 
 add_library(Qt-OpenGL-Example-Engine STATIC
-    Engine.c
+    Engine.cc
 )
 target_link_libraries(Qt-OpenGL-Example-Engine
     PUBLIC ${OPENGL_LIBRARIES}

@@ -1,10 +1,11 @@
-// Copyright (C) 2016 The Qt Company Ltd.
-// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
+extern "C" {
+#include "Engine.h"
+}
 
-#include "glwidget.h"
-#include <QOpenGLShaderProgram>
-#include <QOpenGLTexture>
-#include <QMouseEvent>
+#include <GL/gl3w.h>
+
+#include <stdio.h>
+#include <stdlib.h>
 
 #include <iostream>
 
@@ -25,44 +26,31 @@ unsigned int VBO, VAO;
 
 unsigned int shaderProgram;
 
-GLWidget::~GLWidget()
+void Engine_init()
 {
-    makeCurrent();
-    vbo.destroy();
-    for (int i = 0; i < 6; ++i)
-        delete textures[i];
-    delete program;
-    doneCurrent();
-}
+    switch (gl3wInit())
+    {
+    case GL3W_OK:
+        printf("INFO   GL3W: Successfully loaded OpenGL functions\n");
+        break;
+    case GL3W_ERROR_INIT:
+        fprintf(stderr, "FATAL  GL3W: Failed to load OpenGL functions (GL3W_ERROR_INIT)\n");
+        abort();
+        break;
+    case GL3W_ERROR_LIBRARY_OPEN:
+        fprintf(stderr, "FATAL  GL3W: Failed to load OpenGL functions (GL3W_ERROR_LIBRARY_OPEN)\n");
+        abort();
+        break;
+    case GL3W_ERROR_OPENGL_VERSION:
+        fprintf(stderr, "FATAL  GL3W: Failed to load OpenGL functions (GL3W_ERROR_OPENGL_VERSION)\n");
+        abort();
+        break;
+    }
 
-QSize GLWidget::minimumSizeHint() const
-{
-    return QSize(50, 50);
-}
 
-QSize GLWidget::sizeHint() const
-{
-    return QSize(200, 200);
-}
 
-void GLWidget::rotateBy(int xAngle, int yAngle, int zAngle)
-{
-    xRot += xAngle;
-    yRot += yAngle;
-    zRot += zAngle;
-    update();
-}
 
-void GLWidget::setClearColor(const QColor &color)
-{
-    clearColor = color;
-    update();
-}
 
-void GLWidget::initializeGL()
-{
-    initializeOpenGLFunctions();
-    makeObject();
 
     // build and compile our shader program
     // ------------------------------------
@@ -132,7 +120,7 @@ void GLWidget::initializeGL()
     glBindVertexArray(0); 
 }
 
-void GLWidget::paintGL()
+void Engine_render()
 {
     // render
     // ------
@@ -146,35 +134,7 @@ void GLWidget::paintGL()
     // glBindVertexArray(0); // no need to unbind it every time 
 }
 
-void GLWidget::resizeGL(int width, int height)
+void Engine_setViewPort(int x, int y, int w, int h)
 {
-    int side = qMin(width, height);
-    glViewport((width - side) / 2, (height - side) / 2, side, side);
-}
-
-void GLWidget::mousePressEvent(QMouseEvent *event)
-{
-    lastPos = event->position().toPoint();
-}
-
-void GLWidget::mouseMoveEvent(QMouseEvent *event)
-{
-    int dx = event->position().toPoint().x() - lastPos.x();
-    int dy = event->position().toPoint().y() - lastPos.y();
-
-    if (event->buttons() & Qt::LeftButton) {
-        rotateBy(8 * dy, 8 * dx, 0);
-    } else if (event->buttons() & Qt::RightButton) {
-        rotateBy(8 * dy, 0, 8 * dx);
-    }
-    lastPos = event->position().toPoint();
-}
-
-void GLWidget::mouseReleaseEvent(QMouseEvent * /* event */)
-{
-    emit clicked();
-}
-
-void GLWidget::makeObject()
-{
+    glViewport(x, y, w, h);
 }
