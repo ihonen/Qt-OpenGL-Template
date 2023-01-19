@@ -3,21 +3,20 @@
 # About
 
 This template is an example as to how to build a Qt GUI around a view that is
-renderer with OpenGL.
+renderer with OpenGL. The example is based on ["Hello Triangle" from Learn OpenGL](https://learnopengl.com/Getting-started/Hello-Triangle).
 
 ![](screenshot.png)
 
-There are many similar examples out there, but they tend to mix business logic
-with the GUI logic. I don't think that is the proper way to do things. The core
-application should be as independent of the UI as possible. To that end, the 
-source code in this example is clearly split in two parts:
+There are many similar examples out there, but it seems to me that most of them
+don't properly separate **application** code from **UI** code. Generally speaking,
+the business logic of an application should not depend on the framework used
+to implement the application's user interface. To that end, this example clearly
+separates the two:
 
 - `Source/Gui` contains **Qt-dependent UI layer code** and is **written in C++**
 - `Source/Renderer` contains **OpenGL-dependent application layer code** and is **written in C**
 
-In other words, `Renderer` does not depend on `Gui` and therefore Qt in any way.
-We simply use implement `Gui` with Qt as our framework of choice. We could just
-as well use any other GUI framework if we wanted to.
+In other words, the OpenGL-based `Renderer` is independent of the Qt-based `Gui`.
 
 This example uses GL3W to load OpenGL functions.
 
