@@ -11,12 +11,12 @@
 
 struct Renderer
 {
-    unsigned VAO;
-    unsigned VBO;
-
     unsigned vertexShader;
     unsigned fragmentShader;
     unsigned shaderProgram;
+
+    unsigned VBO;
+    unsigned VAO;
 };
 
 // -----------------------------------------------------------------------------
