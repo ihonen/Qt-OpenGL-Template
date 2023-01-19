@@ -4,4 +4,4 @@
 # gl3w
 ################################################################################
 
-cd "$(dirname $0)/../Extern/gl3w" && ./gl3w_gen.py --root=gen
+cd "$(dirname $0)/../../Extern/gl3w" && ./gl3w_gen.py --root=gen
