@@ -43,11 +43,16 @@ struct Renderer* Renderer_init()
 {
     if (gl3wInit() != GL3W_OK)
     {
-        fprintf(stderr, "FATAL: Failed to load OpenGL functions");
+        fprintf(stderr, "FATAL: Failed to load OpenGL functions\n");
         abort();
     }
 
     struct Renderer* self = malloc(sizeof(struct Renderer));
+    if (!self)
+    {
+        fprintf(stderr, "FATAL: Failed to allocate memory\n");
+        abort();
+    }
 
     // Vertex shader
     {
@@ -105,10 +110,10 @@ struct Renderer* Renderer_init()
 
     // Vertex buffer
     {
-        float triangleVertices[] = {
+        const float triangleVertices[] = {
             -0.5f, -0.5f, 0.0f, // left  
-            0.5f, -0.5f, 0.0f,  // right 
-            0.0f,  0.5f, 0.0f   // top   
+             0.5f, -0.5f, 0.0f, // right 
+             0.0f,  0.5f, 0.0f, // top   
         };
 
         glGenVertexArrays(1, &self->VAO);
