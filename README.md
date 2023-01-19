@@ -12,8 +12,8 @@ with the GUI logic. I don't think that is the proper way to do things. The core
 application should be as independent of the UI as possible. To that end, the 
 source code in this example is clearly split in two parts:
 
-- `Gui` contains **Qt-dependent UI layer code**
-- `Renderer` contains **OpenGL-dependent application layer code**
+- `Gui` contains **Qt-dependent UI layer code** and is written in C++
+- `Renderer` contains **OpenGL-dependent application layer code** and is written in C
 
 In other words, `Renderer` does not depend on `Gui` and therefore Qt in any way.
 We simply use implement `Gui` with Qt as our framework of choice. We could just
