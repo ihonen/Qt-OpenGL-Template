@@ -2,6 +2,8 @@
 
 #include <QOpenGLWidget>
 
+struct Renderer;
+
 class GLWidget final
     : public QOpenGLWidget
 {
@@ -24,4 +26,8 @@ protected:
     void mousePressEvent(QMouseEvent* event) override;
     void mouseMoveEvent(QMouseEvent* event) override;
     void mouseReleaseEvent(QMouseEvent* event) override;
+
+private:
+
+    struct Renderer* m_renderer;
 };

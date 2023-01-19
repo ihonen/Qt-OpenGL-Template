@@ -1,15 +1,15 @@
-add_subdirectory(Engine)
 add_subdirectory(Gui)
+add_subdirectory(Renderer)
 
 ################################################################################
 
-add_executable(Qt-OpenGL-Example
+add_executable(Example-App
     main.cc
 )
-target_include_directories(Qt-OpenGL-Example
+target_include_directories(Example-App
     PUBLIC Extern/gl3w/include
 )
-target_link_libraries(Qt-OpenGL-Example
-    PUBLIC Qt-OpenGL-Example-Engine
-    PUBLIC Qt-OpenGL-Example-Gui
+target_link_libraries(Example-App
+    PUBLIC Example-Gui
+    PUBLIC Example-Renderer
 )

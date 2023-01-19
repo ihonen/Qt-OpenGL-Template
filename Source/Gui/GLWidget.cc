@@ -1,11 +1,12 @@
 #include "GLWidget.hh"
 
 extern "C" {
-#include "../Engine/Engine.h"
+#include "../Renderer/Renderer.h"
 }
 
 GLWidget::~GLWidget()
 {
+    free(m_renderer);
 }
 
 QSize GLWidget::minimumSizeHint() const
@@ -20,19 +21,20 @@ QSize GLWidget::sizeHint() const
 
 void GLWidget::initializeGL()
 {
-    Engine_init();
+    m_renderer = Renderer_init();
 }
 
 void GLWidget::paintGL()
 {
-    Engine_render();
+    Renderer_doRender(m_renderer);
 }
 
 void GLWidget::resizeGL(int width, int height)
 {
     int side = qMin(width, height);
 
-    Engine_setViewPort(
+    Renderer_setViewPort(
+        m_renderer,
         (width  - side) / 2,
         (height - side) / 2,
         side,

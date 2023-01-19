@@ -1,5 +1,5 @@
 extern "C" {
-#include "Engine/Engine.h"
+#include "Renderer/Renderer.h"
 }
 
 #include "Gui/MainWindow.hh"
