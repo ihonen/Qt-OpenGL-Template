@@ -33,4 +33,10 @@ cmake --build build
 
 ## Build & run (Windows)
 
-You need to re-evaluate your life choices.
+This should hopefully work, but you'll need to re-evaluate your life choices:
+```
+Scripts/Windows/bootstrap.ps1
+cmake -B build -S .
+cmake --build build
+./build/Debug/bin/Example-App
+```
