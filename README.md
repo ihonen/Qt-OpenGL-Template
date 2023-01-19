@@ -25,7 +25,7 @@ This example uses GL3W to load OpenGL functions.
 ## Build & run (Linux)
 
 ```
-Scripts/bootstrap
+Scripts/Linux/bootstrap.sh
 cmake -B build -S .
 cmake --build build
 ./build/bin/Example-App
