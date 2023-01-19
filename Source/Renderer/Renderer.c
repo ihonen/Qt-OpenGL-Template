@@ -44,7 +44,7 @@ struct Renderer* Renderer_new()
     struct Renderer* self = calloc(1, sizeof(struct Renderer));
     if (!self)
     {
-        fprintf(stderr, "FATAL: Failed to allocat memory\n");
+        fprintf(stderr, "FATAL: Failed to allocate memory\n");
         abort();
     }
 
