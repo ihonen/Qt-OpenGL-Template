@@ -2,10 +2,10 @@
 
 # About
 
-![](screenshot.png)
-
 This template is an example as to how to build a Qt GUI around a view that is
 renderer with OpenGL.
+
+![](screenshot.png)
 
 There are many similar examples out there, but they tend to mix business logic
 with the GUI logic. I don't think that is the proper way to do things. The core
