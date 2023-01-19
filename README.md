@@ -17,6 +17,8 @@ separates the two:
 - `Source/Renderer` contains **OpenGL-dependent application layer code** and is **written in C**
 
 In other words, the OpenGL-based `Renderer` is independent of the Qt-based `Gui`.
+We could relatively easily swap Qt for any other framework to implement
+the user interface.
 
 This example uses GL3W to load OpenGL functions.
 
