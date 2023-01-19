@@ -2,8 +2,9 @@
 
 # About
 
-This template is an example as to how to build a Qt GUI around a view that is
-renderer with OpenGL. The example is based on ["Hello Triangle" from Learn OpenGL](https://learnopengl.com/Getting-started/Hello-Triangle).
+This example shows how to build a Qt GUI around a view that is rendered with
+OpenGL. The example is based on
+["Hello Triangle" from Learn OpenGL](https://learnopengl.com/Getting-started/Hello-Triangle).
 
 ![](screenshot.png)
 
