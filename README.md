@@ -30,3 +30,7 @@ cmake -B build -S .
 cmake --build build
 ./build/bin/Example-App
 ```
+
+## Build & run (Windows)
+
+You need to re-evaluate your life choices.
