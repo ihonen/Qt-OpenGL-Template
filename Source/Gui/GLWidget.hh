@@ -11,10 +11,9 @@ class GLWidget final
 
 public:
 
-    using QOpenGLWidget::QOpenGLWidget;
-    ~GLWidget();
+    GLWidget(QWidget* parent);
+    ~GLWidget() override;
 
-    QSize minimumSizeHint() const override;
     QSize sizeHint() const override;
 
 protected:

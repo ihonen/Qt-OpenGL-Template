@@ -4,14 +4,15 @@ extern "C" {
 #include "../Renderer/Renderer.h"
 }
 
+GLWidget::GLWidget(QWidget* parent)
+    : QOpenGLWidget(parent)
+{
+    m_renderer = Renderer_new();
+}
+
 GLWidget::~GLWidget()
 {
     free(m_renderer);
-}
-
-QSize GLWidget::minimumSizeHint() const
-{
-    return QSize(50, 50);
 }
 
 QSize GLWidget::sizeHint() const
@@ -21,7 +22,7 @@ QSize GLWidget::sizeHint() const
 
 void GLWidget::initializeGL()
 {
-    m_renderer = Renderer_init();
+    Renderer_init(m_renderer);
 }
 
 void GLWidget::paintGL()

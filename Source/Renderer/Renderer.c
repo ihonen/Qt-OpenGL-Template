@@ -39,18 +39,23 @@ static const char* FragmentShaderSource =
 
 // -----------------------------------------------------------------------------
 
-struct Renderer* Renderer_init()
+struct Renderer* Renderer_new()
+{
+    struct Renderer* self = calloc(1, sizeof(struct Renderer));
+    if (!self)
+    {
+        fprintf(stderr, "FATAL: Failed to allocat memory\n");
+        abort();
+    }
+
+    return self;
+}
+
+void Renderer_init(struct Renderer* self)
 {
     if (gl3wInit() != GL3W_OK)
     {
         fprintf(stderr, "FATAL: Failed to load OpenGL functions\n");
-        abort();
-    }
-
-    struct Renderer* self = malloc(sizeof(struct Renderer));
-    if (!self)
-    {
-        fprintf(stderr, "FATAL: Failed to allocate memory\n");
         abort();
     }
 
@@ -129,8 +134,6 @@ struct Renderer* Renderer_init()
         glBindBuffer(GL_ARRAY_BUFFER, 0); 
         glBindVertexArray(0); 
     }
-
-    return self;
 }
 
 void Renderer_free(struct Renderer* self)
